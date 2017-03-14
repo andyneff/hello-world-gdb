@@ -28,6 +28,6 @@ The easiest thing to do is just give it all permissions. However, if you want th
 most secure option, you need to figure out what is right for your operating systems,
 for example, on Ubuntu with apparmor you need:
 
-- --security-opt=seccomp:unconfined : needed for --attach pid#
-- --security-opt apparmor:unconfined : needed for --multi (not currently used)
-- --cap-add SYS_PTRACE : needed for ptrace
+- `--security-opt=seccomp:unconfined` : needed for --attach pid#
+- `--security-opt apparmor:unconfined` : needed for --multi (not currently used)
+- `--cap-add SYS_PTRACE` : needed for ptrace
