@@ -7,7 +7,8 @@ git clone git@github.com:andyneff/hello-world-gdb.git .
 docker run -it --rm --privileged -v `pwd`:/src:ro --name hello_gdb andyneff/hello-world-gdb
 ```
 
-Attach with your *favorite* debugger
+Attach with your *favorite* debugger using `docker exec -i {container name}` as a wrapper or 
+`docker exec -i {container name} sh -c` if the debugger send multiple arguments as one argument.
 
 # Launch Debugging
 
@@ -19,7 +20,7 @@ docker run -it --rm --privileged -v `pwd`:/src:ro --name hello_gdb andyneff/hell
 gcc /src/hello.cpp -o /hello.out
 ```
 
-Launch with your *favorite* debugger using `docker exec -i {container name} sh -c` as a wrapper.
+Launch with your *favorite* debugger.
 
 ## Why --privileged?
 
