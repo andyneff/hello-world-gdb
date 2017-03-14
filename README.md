@@ -9,7 +9,7 @@ docker run -it --rm --privileged -v `pwd`:/src:ro --name hello_gdb andyneff/hell
 
 Attach with your *favorite* debugger
 
-# Launch Debuging
+# Launch Debugging
 
 Most debuggers are not going to support this gracefully, so the simplest thing to do is to
 start the docker yourself, and compile the binary, and then launch via `docker exec`
