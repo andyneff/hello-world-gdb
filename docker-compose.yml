@@ -1,0 +1,25 @@
+x-common: &common
+  privileged: true
+  volumes:
+    - source: ./
+      target: /src
+      type: bind
+
+services:
+  debian:
+    build:
+      dockerfile: Dockerfile
+    image: andyneff/hello-world-gdb:debian
+    <<: *common
+
+  ubuntu:
+    build:
+      dockerfile: Dockerfile.ubuntu
+    image: andyneff/hello-world-gdb:ubuntu
+    <<: *common
+
+  alpine:
+    build:
+      dockerfile: Dockerfile.alpine
+    image: andyneff/hello-world-gdb:alpine
+    <<: *common

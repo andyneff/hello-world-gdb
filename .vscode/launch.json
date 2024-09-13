@@ -15,9 +15,9 @@
           "pipeCwd": "${workspaceRoot}",
           "pipeProgram": "docker",
           "pipeArgs": [
-              "exec", 
-              "-i", 
-              "hello_gdb", 
+              "exec",
+              "-i",
+              "hello_gdb",
               "sh",
               "-c"
           ],
@@ -60,9 +60,9 @@
           "pipeCwd": "${workspaceRoot}",
           "pipeProgram": "docker",
           "pipeArgs": [
-              "exec", 
-              "-i", 
-              "hello_gdb", 
+              "exec",
+              "-i",
+              "hello_gdb",
               "sh",
               "-c"
           ],
