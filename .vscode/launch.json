@@ -94,6 +94,49 @@
           }
         ]
       }
+    },
+    {
+      "name": "C++ Attach in hello_gdb Singularity",
+      "type": "cppdbg",
+      "request": "attach",
+      "program": "/tmp/hello.out",
+      "processId": "${command:pickRemoteProcess}",
+      "pipeTransport": {
+          "pipeCwd": "${workspaceRoot}",
+          "pipeProgram": "script",
+          "pipeArgs": [
+              "-q",
+              "/dev/null",
+              "-c", "bash", "-c"
+          ],
+          "debuggerPath": "/usr/bin/gdb"
+      },
+      "sourceFileMap": {
+              "/src":"${workspaceRoot}"
+      },
+      "linux": {
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ]
+      },
+      "osx": {
+        "MIMode": "lldb"
+      },
+      "windows": {
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ]
+      }
     }
   ]
 }
