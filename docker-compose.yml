@@ -7,19 +7,25 @@ x-common: &common
 
 services:
   debian:
-    build:
+    build: &build
       dockerfile: Dockerfile
+      args:
+        OS: debian:latest
     image: andyneff/hello-world-gdb:debian
     <<: *common
 
   ubuntu:
     build:
-      dockerfile: Dockerfile.ubuntu
+      <<: *build
+      args:
+        OS: ubuntu:22.04
     image: andyneff/hello-world-gdb:ubuntu
     <<: *common
 
   alpine:
     build:
-      dockerfile: Dockerfile.alpine
+      <<: *build
+      args:
+        OS: alpine:latest
     image: andyneff/hello-world-gdb:alpine
     <<: *common

@@ -15,22 +15,39 @@ start the docker yourself, and compile the binary, and then launch via `docker e
 
 ## Start process
 
-- Use docker
+### Use docker
+
+#### Simple
+
+#### Allow you to edit hello.c
 
 ```
-docker run -it --rm --privileged -v `pwd`:/src:ro --name hello_gdb andyneff/hello-world-gdb sh
-gcc /src/hello.cpp -o /hello.out
+docker run -it --rm --privileged -v `pwd`:/src:ro --name hello_gdb andyneff/hello-world-gdb:debian # Debian
+docker run -it --rm --privileged -v `pwd`:/src:ro --name hello_gdb andyneff/hello-world-gdb:ubuntu # Ubuntu 22.04
+docker run -it --rm --privileged -v `pwd`:/src:ro --name hello_gdb andyneff/hello-world-gdb:alpine # Alpine
 ```
 
-- Use docker compose
+### Use docker compose
 
 ```
-docker compose run --rm --name hello_gdb debian
+docker compose run --rm --name hello_gdb debian # Debian
+docker compose run --rm --name hello_gdb ubuntu # Ubuntu 22.04
+docker compose run --rm --name hello_gdb alpine # Alpine
 ```
 
 It should start printing out the container pid, usually around 12
 
 Attach with your *favorite* debugger.
+
+### Podman
+
+Podman should work the same way, but is untested. Uou just need to replace the words `docker` with `podman`.
+
+### Using singularity/apptainer
+
+Singularity doesn't instance containers in the exact same way as docker. There is no `singularity container ps` or an `exec` that runs in the same container.
+
+I do not know how you would make this work currently. Neither `run`/`exec` nor `instance start`/`instance run` give a way to run a _second_ executable in the container, which is crucial for this. The pid that will be reported in a normal `singularity run` command will print out the real pid, which if you can get GDB to attach to, but I can't figure out how to get VSCode to not freeze.
 
 ## Using VSCode - With Microsoft Remote Extension
 
